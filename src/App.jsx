@@ -5,6 +5,7 @@ import "./App.css";
 import Home from "./Components/pages/Home";
 import { Route, Routes } from "react-router-dom";
 import EbooksDetails from "./Components/pages/EbooksDetails";
+import Navbar from "./Components/Navbar";
 
 function App() {
   const [count, setCount] = useState(0);
