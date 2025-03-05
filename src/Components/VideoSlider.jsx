@@ -19,7 +19,7 @@ const VideoSlider = () => {
     { title: "What is Guitar Shredding?", youtubeId: "jV_34pWCQbo" },
     { title: "Shred Guitarists", youtubeId: "_M1M-ofCYvE" },
     { title: "Guitar Lesson LVL 1", youtubeId: "DxvihtTCQcQ" },
-    { title: "What is Guitar Shredding?", youtubeId: "Iofm9OB77rQ?" },
+    { title: "What is Guitar Shredding?", youtubeId: "Iofm9OB77rQ" },
   ];
 
   // Close modal when ESC key is pressed
