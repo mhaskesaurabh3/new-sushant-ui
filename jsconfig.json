@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"],  // Maps @ to src/
+      "@assets/*": ["assets/*"], // Keeps existing asset alias
+      "@components/*": ["components/*"] // Add this if needed
+    }
+  }
+}
