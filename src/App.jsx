@@ -4,7 +4,6 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Home from "./Components/pages/Home";
 import { Route, Routes } from "react-router-dom";
-import Navbar from "@components/Navbar"; // If you added the alias
 import EbooksDetails from "./Components/pages/EbooksDetails";
 
 function App() {
