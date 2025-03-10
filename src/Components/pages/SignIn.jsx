@@ -48,13 +48,10 @@ const SignIn = () => {
       return;
     }
     try {
-      // Hash the password before sending
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(formData.password, salt);
       const response = await api.post("/auth/register", {
         name: formData.name,
         email: formData.email,
-        password: hashedPassword,
+        password: formData.password,
       });
       console.log({ response });
       setLoading(false);

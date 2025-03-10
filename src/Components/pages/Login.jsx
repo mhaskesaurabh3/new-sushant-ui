@@ -2,15 +2,47 @@ import React, { useState } from "react";
 import logo from "@/assets/icons/logo.svg";
 import { useNavigate } from "react-router-dom";
 import showCustomToast from "../ui/CustomToast";
+import bcrypt from "bcryptjs";
+import Button from "../ui/Button";
+import api from "../utils/axiosInstance";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLoginFormSubmit = (e) => {
+  const handleLoginFormSubmit = async (e) => {
     e.preventDefault();
-    showCustomToast("Testing", "success");
+    if (email == "") {
+      showCustomToast("Please enter email");
+      return;
+    }
+    if (password === "") {
+      showCustomToast("Please enter password");
+      return;
+    }
+    setLoading(true);
+    try {
+      const response = await api
+        .post("/auth/login", {
+          email,
+          password,
+        })
+        .then(async (res) => {
+          console.log({ res });
+          const getUserDetails = await api.get("/user");
+          if (getUserDetails) {
+            console.log({ getUserDetails });
+            navigate("/");
+            setLoading(false);
+            showCustomToast("Login successful!", "success");
+          }
+        });
+    } catch (error) {
+      showCustomToast(error, "error");
+      setLoading(false);
+    }
   };
 
   return (
@@ -37,13 +69,16 @@ const Login = () => {
               type="password"
               className="w-full mt-6 text-black border font-medium border-[#ced0d4] p-3 rounded-md hover:border-gray-500 focus:border-gray-500 focus:border focus:outline-none "
               placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
-            <button
+            <Button
               className="w-full bg-black text-white font-semibold py-3 mt-8 rounded-lg"
               type="submit"
+              disabled={email === "" || password === ""}
             >
               Log in
-            </button>
+            </Button>
           </form>
           <div className="mt-6">
             <p className="text-sm text-black">
