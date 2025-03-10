@@ -17,6 +17,10 @@ const Navbar = () => {
       name: "Guitar Level 1",
       path: "/guitar-level-1",
     },
+    {
+      name: "Log in",
+      path: "/login",
+    },
   ];
 
   return (
